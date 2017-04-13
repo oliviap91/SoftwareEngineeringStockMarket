@@ -1,26 +1,28 @@
-public class FoodStock extends StockType {
-
-  public int variation;
-  public int valueOfWorth;
- 
-  public FoodStock() {
-    variation = 0;
-    valueOfWorth = 0;
-  }
+public class FoodStock extends StockType
+{
+    public FoodStock(int val)
+    {
+        variation = 0;
+        valueOfWorth = val;
+    }
     
-  int getValueOfWorth(){
-    return valueOfWorth;
-  }
+    public int getValueOfWorth()
+    {
+        return valueOfWorth;
+    }
 
-  int getVariation(){
-    return variation;
-  }
+    public int getVariation()
+    {
+        return variation;
+    }
   
-  void setValueOfWorth(int val){
-    valueOfWorth = val;
-  }
+    public void setValueOfWorth(int val)
+    {
+        valueOfWorth = val;
+    }
 
-  void setVariation(int var){
-    variation = var;
-  }
+    public void setVariation(int var)
+    {
+        variation = var;
+    }
 }

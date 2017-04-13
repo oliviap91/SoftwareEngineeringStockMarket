@@ -1,21 +1,24 @@
-abstract class StockType  {
-    
+abstract class StockType
+{
     int valueOfWorth;
     int variation;
  
-  public StockType() {
+    public StockType()
+    {
+        valueOfWorth = 0;
+        variation = 0;
     }
     
-  int getValueOfWorth(){
-    return valueOfWorth;
-  }
-
-  int getVariation(){
-      return variation;
-  }
-  
-  void setValueOfWorth(int val){
-  }
-
-
+    public int getValueOfWorth()
+    {
+        return valueOfWorth;
+    }
+    public int getVariation()
+    {
+        return variation;
+    }
+    public void setValueOfWorth(int val)
+    {
+        valueOfWorth = val;
+    }
 }
