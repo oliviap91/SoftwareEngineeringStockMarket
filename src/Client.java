@@ -1,13 +1,20 @@
-public class Client {
+public class Client
+{
     Trader trader;
     Portfolio portfolio;
     int risk;
     
-    public Client(){
+    public Client()
+    {
         
     }
     
-    public void setRisk(){
+    public void setRisk()
+    {
+
+    }
+    public void updateWorth()
+    {
 
     }
     

@@ -2,16 +2,19 @@ import java.util.*;
 
 public class Time
 {
-    int[] date;
     int[] monthDays;
+    String[] weekdays;
+    private Date date;
+    private boolean isOpen;
     private int year;
     private int month;
     private int day;
     private int hour;
     private int minute;
     private int second;
-    private int counter;
-    Timer timer;
+    private int dayCounter;
+    private int weekdayCounter;
+    private Timer timer;
 
     public Time()
     {
@@ -22,8 +25,9 @@ public class Time
         hour = 0;
         minute = 0;
         second = 0;
-        counter = 1;
-        date = new int[6];
+        dayCounter = 1;
+        weekdayCounter = 1;
+        date = new Date();
 
 
         timer = new Timer();
@@ -48,9 +52,9 @@ public class Time
                 if(hour == 59)
                 {
                     hour = 0;
-                    if(day == monthDays[counter])
+                    if(day == monthDays[dayCounter])
                     {
-                        counter++;
+                        dayCounter++;
                         day = 0;
                         if(month == 12)
                         {
@@ -59,29 +63,33 @@ public class Time
                         month++;
                     }
                     day++;
+                    if(weekdayCounter == 7)
+                        weekdayCounter = 1;
+                    else
+                        weekdayCounter++;
                 }
                 hour++;
             }
             minute++;
         }
         second++;
-
         updateDateArray();
+        isOpen = CheckDate();
     }
 
-    public int[] getDate()
+    public Date getDate()
     {
         return date;
     }
 
     private void updateDateArray()
     {
-        date[0] = second;
-        date[1] = minute;
-        date[2] = hour;
-        date[3] = day;
-        date[4] = month;
-        date[5] = year;
+        date.setSecond(second);
+        date.setMinute(minute);
+        date.setHour(hour);
+        date.setDay(day);
+        date.setMonth(month);
+        date.setYear(year);
     }
 
     private void initialiseMonthDays()
@@ -99,5 +107,27 @@ public class Time
         monthDays[9] = 31;
         monthDays[10] = 30;
         monthDays[11] = 31;
+    }
+
+    private boolean CheckDate()
+    {
+        if(date.getMonth()==4 && date.getDay()==14)
+            return false;
+        if(date.getMonth()==4 && date.getDay()==17)
+            return false;
+        if(date.getMonth()==12 && date.getDay()==25)
+            return false;
+        if(date.getMonth()==12 && date.getDay()==26)
+            return false;
+        if(weekdayCounter == 6 || weekdayCounter == 7)
+            return false;
+        if(date.getHour()<9 || date.getHour()>3)
+            return false;
+        return true;
+    }
+
+    public boolean IsOpen()
+    {
+        return isOpen;
     }
 }

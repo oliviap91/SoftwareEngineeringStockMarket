@@ -3,8 +3,14 @@ public class StockMarket {
     TradingExchange tradingExchange;
     Trader trader;
     
-    public StockMarket(){
+    public StockMarket()
+    {
         
+    }
+
+    public void UpdateIndex()
+    {
+
     }
     
 }
