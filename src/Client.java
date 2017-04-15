@@ -1,21 +1,22 @@
 public class Client
 {
-    Trader trader;
+    String clientName;
     Portfolio portfolio;
     int risk;
     
-    public Client()
+    public Client(String clientName)
     {
-        
+        this.clientName = clientName;
+        portfolio = new Portfolio();
     }
     
-    public void setRisk()
+    public void setRisk(int risk)
     {
-
+        this.risk = risk;
     }
     public void updateWorth()
     {
-
+        
     }
     
 }

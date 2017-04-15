@@ -1,22 +1,17 @@
 public class RandomTrader extends Trader {
-    
-    public RandomTrader(){
-        
+
+    public RandomTrader(Client client)
+    {
+        super(client);
     }
-    
-    void balancedBuy(){
-        
+
+    public void sellShare()
+    {
+
     }
-    
-    void balancedSell(){
-        
+
+    public void buyShare()
+    {
+
     }
-    
-    void agressivePurchaser(){
-        
-    }
-    
-    void aggressiveSeller(){
-    }
-    
 }

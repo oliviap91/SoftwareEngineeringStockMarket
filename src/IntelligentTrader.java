@@ -1,11 +1,17 @@
-public class IntelligentTrader extends Trader{
-    
-    void buy(){
-        
+public class IntelligentTrader extends Trader
+{
+    public IntelligentTrader(Client client)
+    {
+        super(client);
     }
-    
-    void sell(){
+
+    public void sellShare()
+    {
+
     }
-    
-    
+
+    public void buyShare()
+    {
+
+    }
 }
