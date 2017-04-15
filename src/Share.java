@@ -1,25 +1,27 @@
 public class Share
 {
-    private String shareName;
-    private double sharePrice;
+    private String companyName;
+    private double shareValue;
     private boolean isWorthless;
     private int numOfShares;
+    private TradedCompanies tradedCompany;
 
-    public Share(String shareName, double sharePrice, int numOfShares)
+    public Share(String companyName, int numOfShares, TradedCompanies tradedCompany)
     {
-        this.shareName = shareName;
-        this.sharePrice = sharePrice;
+        this.companyName = companyName;
+        shareValue = CalculateSharePrice();
         this.numOfShares = numOfShares;
         isWorthless = false;
+        this.tradedCompany = tradedCompany;
     }
 
-    public String getShareName()
+    public String getCompanyName()
     {
-        return shareName;
+        return companyName;
     }
     public double getSharePrice()
     {
-        return sharePrice;
+        return shareValue;
     }
     public boolean IsWorthless()
     {
@@ -29,10 +31,14 @@ public class Share
 
     public void updateSharePrice(double value)
     {
-        sharePrice = value;
-        if(sharePrice == 0)
+        shareValue = value;
+        if(shareValue == 0)
         {
             isWorthless = true;
         }
+    }
+    private double CalculateSharePrice()
+    {
+        return tradedCompany.getStockPrice()*numOfShares;
     }
 }

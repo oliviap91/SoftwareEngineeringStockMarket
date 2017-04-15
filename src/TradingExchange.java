@@ -16,7 +16,7 @@ public class TradingExchange
     {
         for (Share s : sharesList)
         {
-            if(s.getShareName() == shareName)
+            if(s.getCompanyName() == shareName)
             {
                 Share temp = s;
                 sharesList.remove(s);
