@@ -1,12 +1,14 @@
 public class Client
 {
-    String clientName;
-    Portfolio portfolio;
+    public Trader trader;
+    private String clientName;
+    private Portfolio portfolio;
     int risk;
     
-    public Client(String clientName)
+    public Client(String clientName, Trader trader)
     {
         this.clientName = clientName;
+        this.trader = trader;
         portfolio = new Portfolio();
     }
     
@@ -18,5 +20,4 @@ public class Client
     {
 
     }
-    
 }

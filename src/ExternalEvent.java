@@ -28,6 +28,10 @@ public class ExternalEvent
         return action;
     }
     public int getDuration() { return duration; }
+    public String getStockTypeAffected()
+    {
+        return stockTypeAffected;
+    }
 
 
 }

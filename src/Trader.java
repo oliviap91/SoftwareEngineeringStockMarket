@@ -1,13 +1,22 @@
 abstract class Trader
 {
-    Client client;
+    private TraderMode traderMode;
 
-    public Trader(Client client)
+    public Trader(TraderMode traderMode)
     {
-        this.client = client;
+        this.traderMode = traderMode;
     }
 
-    public abstract void buyShare();
+    public abstract void buyShare(String companyName);
 
     public abstract void sellShare();
+
+    public TraderMode getTraderMode()
+    {
+        return traderMode;
+    }
+    public void setTraderMode(TraderMode traderMode)
+    {
+        this.traderMode = traderMode;
+    }
 }

@@ -16,10 +16,12 @@ public class TradedCompanies
     {
         return stockPrice;
     }
-    /*
-    public Share issueShare()
+    public String getName()
     {
-        return new Share();
+        return name;
     }
-    */
+    public StockType getStockType()
+    {
+        return stockType;
+    }
 }

@@ -1,10 +1,12 @@
-abstract class StockType
+public class StockType
 {
     int valueOfWorth;
     int variation;
+    String name;
  
-    public StockType()
+    public StockType(String name)
     {
+        this.name = name;
         valueOfWorth = 0;
         variation = 0;
     }

@@ -3,7 +3,6 @@ import java.util.*;
 public class Time
 {
     int[] monthDays;
-    String[] weekdays;
     private Date date;
     private boolean isOpen;
     private int year;

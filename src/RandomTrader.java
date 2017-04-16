@@ -1,16 +1,17 @@
-public class RandomTrader extends Trader {
+public class RandomTrader extends Trader
+{
 
-    public RandomTrader(Client client)
+    public RandomTrader(TraderMode traderMode)
     {
-        super(client);
+        super(traderMode);
+    }
+
+    public void buyShare(String companyName)
+    {
+
     }
 
     public void sellShare()
-    {
-
-    }
-
-    public void buyShare()
     {
 
     }
