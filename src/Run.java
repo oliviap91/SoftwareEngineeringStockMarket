@@ -52,7 +52,7 @@ public class Run
                                     {
                                         if(client.trader.getTraderType().equals("random"))
                                         {
-                                            // reset the buying and selling preferences
+                                            // reset the buying and selling preferences of the random traders
                                         }
                                     }
                                 }
