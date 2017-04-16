@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Time
 {
+    private int timeScale;
     int[] monthDays;
     private Date date;
     private boolean isOpen;
@@ -15,8 +16,9 @@ public class Time
     private int weekdayCounter;
     private Timer timer;
 
-    public Time()
+    public Time(int timeScale)
     {
+        this.timeScale = timeScale;
         initialiseMonthDays();
         year = 2017;
         month = 1;
@@ -37,7 +39,7 @@ public class Time
             {
                 runTime();
             }
-        }, 0, 1000);
+        }, 0, 1000/timeScale);
     }
 
     private void runTime()
@@ -57,7 +59,7 @@ public class Time
                         day = 0;
                         if(month == 12)
                         {
-                            // finish timer, call exit method
+                            // finish programTimer, call exit method
                         }
                         month++;
                     }

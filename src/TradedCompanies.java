@@ -24,4 +24,9 @@ public class TradedCompanies
     {
         return stockType;
     }
+
+    public void removeShares(int val) // removes shares from the total shares
+    {
+        totalShares = totalShares - val;
+    }
 }

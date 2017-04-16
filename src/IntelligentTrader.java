@@ -1,16 +1,17 @@
 public class IntelligentTrader extends Trader
 {
-    public IntelligentTrader(Client client)
+
+    public IntelligentTrader(TraderMode traderMode)
     {
-        super(client);
+        super(traderMode, "intelligent");
+    }
+
+    public void buyShare(String companyName)
+    {
+
     }
 
     public void sellShare()
-    {
-
-    }
-
-    public void buyShare()
     {
 
     }

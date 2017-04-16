@@ -1,10 +1,12 @@
 abstract class Trader
 {
     private TraderMode traderMode;
+    private String traderType;
 
-    public Trader(TraderMode traderMode)
+    public Trader(TraderMode traderMode, String traderType)
     {
         this.traderMode = traderMode;
+        this.traderType = traderType;
     }
 
     public abstract void buyShare(String companyName);
@@ -15,6 +17,7 @@ abstract class Trader
     {
         return traderMode;
     }
+    public String getTraderType() { return  traderType; }
     public void setTraderMode(TraderMode traderMode)
     {
         this.traderMode = traderMode;

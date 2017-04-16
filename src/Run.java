@@ -2,47 +2,29 @@ import java.util.*;
 public class Run
 {
     static Time time; // used to get the current time
-    static Timer timer; // a timer used to update the stockmarket and client's worth
+    static Timer programTimer; // a programTimer used to update the stockmarket and client's worth
+    static Timer eventTimer; // a timer used to time the length of events
     static StockMarket stockMarket; // The global stockmarket
     static LinkedList<Client> clientList; // List of clients
     static LinkedList<ExternalEvent> externalEvents; // List of external events
-    public static LinkedList<TradedCompanies> tradedCompanies;
+    public static LinkedList<TradedCompanies> tradedCompanies; // list of the trading companies with stock price and
     static TraderMode balanced;
     static TraderMode aggressiveSeller;
     static TraderMode aggressivePurchaser;
+    public static int timeScale = 100;
 
     public static void main(String[] args)
     {
         balanced = new TraderMode(1,1, "balanced");
         aggressiveSeller = new TraderMode(2,0.5,"aggressiveSeller");
         aggressivePurchaser = new TraderMode(0.5,2, "aggressivePurchaser");
-        initialiseVariables();
+        clientList = new LinkedList<>();
+        time = new Time(timeScale); // use time.GetDate() to get the time in int[] form;
+        stockMarket = new StockMarket();
+        initialiseTimers();
         initialiseExternalEvents();
         initialiseTradedCompanies();
         initialiseClientList();
-    }
-
-    private static void initialiseVariables()
-    {
-        clientList = new LinkedList<>();
-        time = new Time(); // use time.GetDate() to get the time in int[] form;
-        stockMarket = new StockMarket();
-
-        timer = new Timer();
-        timer.schedule(new TimerTask()
-        {
-            @Override
-            public void run()
-            {
-                stockMarket.UpdateIndex();
-                for (Client client:clientList)
-                {
-                    client.updateWorth();
-                    changeTraderMode(client);
-                    checkExternalEvents();
-                }
-            }
-        }, 0, 900000);
     }
 
     private static void checkExternalEvents()
@@ -53,18 +35,28 @@ public class Run
             {
                 if(time.getDate() == e.getDateOfEvent())
                 {
-                    if(e.getStockTypeAffected().equals(c.getName()))
+                    if(e.getStockTypeAffected().equals(c.getName()) || e.getStockTypeAffected().equals(c.getStockType()))
                     {
                         for (Client client : clientList)
                         {
-                            client.trader.buyShare(c.getName()); // increase buying
-                        }
-                    }
-                    else if(e.getStockTypeAffected().equals(c.getStockType()))
-                    {
-                        for (Client client: clientList)
-                        {
-                            client.trader.buyShare(c.getName());
+                            // change buying and selling preferences for event e
+
+                            int length = e.getDuration();
+                            eventTimer.schedule(new TimerTask()
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    stockMarket.UpdateIndex();
+                                    for (Client client:clientList)
+                                    {
+                                        if(client.trader.getTraderType().equals("random"))
+                                        {
+                                            // reset the buying and selling preferences
+                                        }
+                                    }
+                                }
+                            },(1000*60*60*24)*length/timeScale);
                         }
                     }
                 }
@@ -98,6 +90,30 @@ public class Run
             else if(temp>=0.7 && temp <1)
                 client.trader.setTraderMode(aggressiveSeller);
         }
+    }
+
+    private static void initialiseTimers()
+    {
+        programTimer = new Timer();
+        programTimer.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+            {
+                stockMarket.UpdateIndex();
+                for (Client client:clientList)
+                {
+                    client.updateWorth();
+                    changeTraderMode(client);
+                    checkExternalEvents();
+                }
+            }
+        }, 0, 900000/timeScale);
+
+        //////////////////////////////////////////////////
+
+        eventTimer = new Timer();
+
     }
 
     private static void initialiseClientList()
