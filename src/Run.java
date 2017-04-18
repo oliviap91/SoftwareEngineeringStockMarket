@@ -119,16 +119,16 @@ public class Run
     private static void initialiseClientList()
     {
         clientList = new LinkedList<>();
-        clientList.add(new Client("Norbert DaVinci", new RandomTrader(balanced)));
-        clientList.add(new Client("Ellen Fotheringay-Smythe", new RandomTrader(balanced)));
-        clientList.add(new Client("Donald Shrek", new RandomTrader(balanced)));
-        clientList.add(new Client("Sir Melvin Codd", new RandomTrader(balanced)));
-        clientList.add(new Client("A&G investments", new RandomTrader(balanced)));
-        clientList.add(new Client("Trinity Investments", new RandomTrader(balanced)));
-        clientList.add(new Client("Ivor Lott", new RandomTrader(balanced)));
-        clientList.add(new Client("Justine Thyme", new RandomTrader(balanced)));
-        clientList.add(new Client("Saeed Pune", new RandomTrader(balanced)));
-        clientList.add(new Client("Xi Xian", new RandomTrader(balanced)));
+        clientList.add(new Client("Norbert DaVinci", new RandomTrader(balanced, tradedCompanies)));
+        clientList.add(new Client("Ellen Fotheringay-Smythe", new RandomTrader(balanced,tradedCompanies)));
+        clientList.add(new Client("Donald Shrek", new RandomTrader(balanced,tradedCompanies)));
+        clientList.add(new Client("Sir Melvin Codd", new RandomTrader(balanced,tradedCompanies)));
+        clientList.add(new Client("A&G investments", new RandomTrader(balanced,tradedCompanies)));
+        clientList.add(new Client("Trinity Investments", new RandomTrader(balanced,tradedCompanies)));
+        clientList.add(new Client("Ivor Lott", new RandomTrader(balanced,tradedCompanies)));
+        clientList.add(new Client("Justine Thyme", new RandomTrader(balanced,tradedCompanies)));
+        clientList.add(new Client("Saeed Pune", new RandomTrader(balanced,tradedCompanies)));
+        clientList.add(new Client("Xi Xian", new RandomTrader(balanced,tradedCompanies)));
     }
 
     private static void initialiseTradedCompanies()
